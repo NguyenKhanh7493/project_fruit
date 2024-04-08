@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-
+use App\Http\Controllers\CategorysController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +17,9 @@ use App\Http\Controllers\AuthController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/login', [AuthController::class, "showFormLogin"])->name("login");
-Route::post('/login', [AuthController::class, "login"])->name("login");
-Route::get('/dashboard', [AuthController::class, "index"])->name("dashboard");
+Route::get('/login', [AuthController::class, "showFormLogin"])->name("login")->middleware('guest');
+Route::post('/login', [AuthController::class, "login"]);
+Route::middleware('auth')->group(function() {
+    Route::get('/dashboard', [AuthController::class, "index"])->name("dashboard");
+    Route::get('/category/add', [CategorysController::class, "add"])->name("categoryAdd");
+});

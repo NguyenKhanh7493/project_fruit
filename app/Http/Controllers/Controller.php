@@ -12,9 +12,9 @@ class Controller extends BaseController
     use AuthorizesRequests, ValidatesRequests;
     public function index()
     {
-        $user = Auth::user();
-        $userName = $user->email;
-        var_dump($userName);exit;
-        return view('dashboard.home');
+        // $user = Auth::user();
+        // $userName = $user->email;
+        // var_dump($userName);exit;
+        return view('temp.dashboard.dashboard');
     }
 }

@@ -23,7 +23,7 @@ class AuthController extends Controller
             'password.required' => 'Please enter your password.',
         ]);
         if (Auth::attempt($request->only('email', 'password'))) {
-            // Login successful
+            $request->session()->put('email', $request->email);
             return redirect()->intended('/dashboard');
         }
         return redirect()->back()->withErrors(['email' => 'Incorrect email or password.']);

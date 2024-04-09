@@ -16,4 +16,12 @@ class Product extends Model
         'price',
         'status',
     ];
+    const KG    = 1;
+    const PCS   = 2;
+    const PACK  = 3;
+    const UNIT = [
+        self::KG    => 'Kg',
+        self::PCS   => 'pcs',
+        self::PACK  => 'Pack',
+    ];
 }
